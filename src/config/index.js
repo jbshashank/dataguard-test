@@ -14,9 +14,9 @@ module.exports = ({ env: chosenEnv } = {}) => {
 
   const getEnvSpecificConfig = environments[env];
 
-  const config = R.mergeDeepRight(getDefaultConfig(), getEnvSpecificConfig());
+  // const config = R.mergeDeepRight(getDefaultConfig(), getEnvSpecificConfig());
 
-  Joi.assert(config, configValidationSchema, 'Config validation failed');
+  // Joi.assert(config, configValidationSchema, 'Config validation failed');
 
-  return config;
+  return getDefaultConfig();
 };

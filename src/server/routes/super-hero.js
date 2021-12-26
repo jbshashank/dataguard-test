@@ -27,7 +27,7 @@ module.exports = ([
     method: 'GET',
     options: {
       tags: ['api'],
-      description: 'Get all example data.',
+      description: 'Get superhero data using the name',
       validate: getSuperHero.validate,
       response: { schema: getSuperHero.response },
     plugins: {
@@ -41,7 +41,7 @@ module.exports = ([
     method: 'POST',
     options: {
       tags: ['api'],
-      description: 'Get all example data from db.',
+      description: 'Create a new Super hero',
       validate: { payload: createSuperHeros.request?.payload },
       response: { schema: createSuperHeros.response },
       plugins: {

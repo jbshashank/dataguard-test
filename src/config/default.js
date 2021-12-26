@@ -14,7 +14,7 @@ module.exports = () => {
     version,
     env,
     mongodb: {
-      url: process.env.MONGODB_URL,
+      url: process.env.MONGODB_URL||'mongodb+srv://shashank-mongo:mongofree@cluster0.1umqx.mongodb.net/cluster0?retryWrites=true&w=majority',
       poolSize: Number(process.env.MONGODB_POOL_SIZE ?? 10),
       serverSelectionTimeoutMS: Number(process.env.MONGODB_SERVER_SELECTION_TIMEOUT ?? 30000),
     },

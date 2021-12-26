@@ -24,7 +24,7 @@ module.exports = () => {
       returnValidationInfoError: (process.env.SERVER_RETURN_VALIDATION_INFO_ERROR ?? 'false').trim().toLowerCase() === 'true',
     },
     swagger: {
-      enabled: (process.env.SWAGGER_ENABLED ?? 'false').trim().toLowerCase() === 'true',
+      enabled: (process.env.SWAGGER_ENABLED ?? 'true').trim().toLowerCase() === 'true',
     },
     log: {
       name,

@@ -1,0 +1,55 @@
+{
+  "name": "dataguard-test",
+  "version": "1.0.0",
+  "main": "bin/index",
+  "engines": {
+    "node": "14.17.2",
+    "npm": "6.14.13"
+  },
+  "scripts": {
+    "watch": "nodemon --watch src --watch bin/index.js",
+    "start": "node .",
+    "test": "jest -c jest.config.js",
+    "lint": "eslint --ignore-pattern 'node_modules/**' 'src/**/*.{js,jsx,ts,tsx}' '__tests__/**/*.{js,jsx,ts,tsx}'",
+    "lint-fix": "npm run lint -- --fix",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "npm run lint-fix"
+    ]
+  },
+  "dependencies": {
+    "@hapi/hapi": "~20.1.5",
+    "@hapi/inert": "~6.0.3",
+    "@hapi/vision": "~6.1.0",
+    "@sentry/node": "~6.10.0",
+    "awilix": "~4.3.4",
+    "axios": "~0.21.1",
+    "hapi-swagger": "~14.2.4",
+    "joi": "~17.4.1",
+    "mongoose": "~5.13.4",
+    "ramda": "~0.27.1",
+    "util-promisifyall": "~1.0.6",
+    "winston": "~3.3.3"
+  },
+  "devDependencies": {
+    "eslint": "~7.31.0",
+    "eslint-config-airbnb-base": "~14.2.1",
+    "eslint-plugin-import": "~2.23.4",
+    "faker": "~5.5.3",
+    "husky": "~7.0.0",
+    "jest": "~27.0.6",
+    "jest-sonar-reporter": "~2.0.0",
+    "lint-staged": "~11.1.1",
+    "mongo-seeding": "~3.7.0",
+    "mongodb-memory-server": "~7.3.4",
+    "mongodb-uri": "~0.9.7",
+    "nodemon": "~2.0.12",
+    "rosie": "~2.1.0"
+  },
+  "jestSonar": {
+    "reportPath": "coverage",
+    "reportFile": "test-report.xml"
+  }
+}

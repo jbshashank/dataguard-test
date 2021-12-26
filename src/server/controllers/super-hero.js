@@ -1,10 +1,12 @@
 'use strict';
 
 const superHeroFormatter = require('../../formatters/super-hero');
+const notFoundError = 
 
 module.exports = class SuperHeroController {
-  constructor({ SuperHeroService }) {
+  constructor({ SuperHeroService,logger }) {
     this.SuperHeroService = SuperHeroService;
+    this.logger = logger;
   }
 
   async getAllSuperHeros() {
@@ -15,29 +17,36 @@ module.exports = class SuperHeroController {
     return superHeros.map(superHeroFormatter);
   }
 
-  async getSpecificSuperHero(request) { 
-  const { SuperHeroService } = this;
+  async getSuperHero(request) { 
+  const { SuperHeroService,logger } = this;
 
-  const {superHeros} = await SuperHeroService.getAllSuperHeros();
+  const { specificSuperHeroData } = await SuperHeroService.getSpecificSuperHero(request);
 
-  return superHeroFormatter(superHeros);
+  logger.debug('data',{specificSuperHeroData})
+  if(specificSuperHeroData.length == 1)
+    return superHeroFormatter(specificSuperHeroData[0]);
+  
+    return {};
   }
 
   async createSuperHero(request) { 
   const { SuperHeroService } = this;
 
-  const superHeros = await SuperHeroService.addNewSuperHero(request);
+  const { success } = await SuperHeroService.addNewSuperHero(request);
 
-  return superHeroFormatter(superHeros);
-  
+  return {
+    success
+  };  
 }
 
 async deleteSuperHero(request) { 
   const { SuperHeroService } = this;
 
-  const superHeros = await SuperHeroService.deleteSuperHero(request);
+  const { success } = await SuperHeroService.deleteSuperHero(request);
 
-  return superHeroFormatter(superHeros);
+  return {
+    success
+  };
   
 }
 

@@ -32,13 +32,13 @@ module.exports = class SuperHeroService {
     return superHeroData;
   }
 
-  async getSpecificSuperHero(req ) {
+  async getSpecificSuperHero(request) {
     const {
       logger,
       SuperHeroDataAccess,
     } = this;
 
-    const { name } = req.params;
+    const { name } = request?.params;
 
     const specificSuperHeroData =  await SuperHeroDataAccess.getSpecificSuperHero({name});
     logger.debug('Super heros data', {
@@ -78,7 +78,6 @@ module.exports = class SuperHeroService {
 
   async deleteSuperHero(request) {
     const {
-      logger,
       SuperHeroDataAccess,
     } = this;
 
